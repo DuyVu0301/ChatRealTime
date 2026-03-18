@@ -18,10 +18,11 @@ const sessionSchema = new mongoose.Schema(
       required: true,
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
 
-// tu dong xoa khi het han
 sessionSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 });
 
 export default mongoose.model("Session", sessionSchema);

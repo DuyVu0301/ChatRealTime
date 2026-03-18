@@ -1,7 +1,6 @@
 import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
-// authorization - xac minh user la ai
 export const protectedRoute = (req, res, next) => {
   try {
     // lay token tu header
@@ -9,10 +8,10 @@ export const protectedRoute = (req, res, next) => {
     const token = authHeader && authHeader.split(" ")[1];
 
     if (!token) {
-      return res.status(401).json({ message: "Not found AccressToken!" });
+      return res.status(401).json({ message: "Can't found Accesstoken." });
     }
 
-    // xac nhan token hop le
+    // xac nhan token khong hop le
     jwt.verify(
       token,
       process.env.ACCESS_TOKEN_SECRET,
@@ -20,7 +19,9 @@ export const protectedRoute = (req, res, next) => {
         if (err) {
           console.error(err);
 
-          return res.status(403).json({});
+          return res
+            .status(403)
+            .json({ message: "Access token has expired or is incorrect." });
         }
 
         // tim user
@@ -29,7 +30,7 @@ export const protectedRoute = (req, res, next) => {
         );
 
         if (!user) {
-          return res.status(404).json({ message: "User doesn't exist!" });
+          return res.status(404).json({ message: "User doesn't exist." });
         }
 
         // tra user ve trong req
@@ -38,7 +39,7 @@ export const protectedRoute = (req, res, next) => {
       }
     );
   } catch (error) {
-    console.error("Error verifying JWT in authMiddleware", error);
+    console.error("JWT authentication error in AuthMiddleware", error);
     return res.status(500).json({ message: "Error" });
   }
 };
