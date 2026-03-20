@@ -2,14 +2,11 @@ import { useAuthStore } from "@/stores/useAuthStore";
 import axios from "axios";
 
 const api = axios.create({
-  baseURL:
-    import.meta.env.MODE === "development"
-      ? "http://localhost:5001/api"
-      : "/api",
+  baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
 });
 
-// gan access token vao req header
+// gắn access token vào req header
 api.interceptors.request.use((config) => {
   const { accessToken } = useAuthStore.getState();
 
@@ -20,13 +17,13 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// tu dong goi refresh api khi access token het han
+// tự động gọi refresh api khi access token hết hạn
 api.interceptors.response.use(
   (res) => res,
   async (error) => {
     const originalRequest = error.config;
 
-    // nhung api khong can check
+    // những api không cần check
     if (
       originalRequest.url.includes("/auth/signin") ||
       originalRequest.url.includes("/auth/signup") ||
