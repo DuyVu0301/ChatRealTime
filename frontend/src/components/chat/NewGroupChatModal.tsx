@@ -16,7 +16,7 @@ import type { Friend } from "@/types/user";
 import IniviteSuggestionList from "../newGroupChat/IniviteSuggestionList";
 import SelectedUsersList from "../newGroupChat/SelectedUsersList";
 import { toast } from "sonner";
-import { useChatStore } from "@/stores/useChatStore.tsx";
+import { useChatStore } from "@/stores/useChatStore.ts";
 
 const NewGroupChatModal = () => {
   const [groupName, setGroupName] = useState("");

@@ -14,15 +14,15 @@ import {
 } from "@/components/ui/sidebar";
 import { Moon, Sun } from "lucide-react";
 import { Switch } from "../ui/switch";
-import CreateNewChat from "../chat/CreateNewChat.tsx";
-import NewGroupChatModal from "../chat/NewGroupChatModal.tsx";
-import GroupChatList from "../chat/GroupChatList.tsx";
-import AddFriendModal from "../chat/AddFriendModal.tsx";
-import DirectMessageList from "../chat/DirectMessageList.tsx";
-import { useThemeStore } from "@/stores/useThemeStore.ts";
+import CreateNewChat from "../chat/CreateNewChat";
+import NewGroupChatModal from "../chat/NewGroupChatModal";
+import GroupChatList from "../chat/GroupChatList";
+import AddFriendModal from "../chat/AddFriendModal";
+import DirectMessageList from "../chat/DirectMessageList";
+import { useThemeStore } from "@/stores/useThemeStore";
 import { useAuthStore } from "@/stores/useAuthStore";
 import ConversationSkeleton from "../skeleton/ConversationSkeleton";
-import { useChatStore } from "@/stores/useChatStore.ts";
+import { useChatStore } from "@/stores/useChatStore";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { isDark, toggleTheme } = useThemeStore();

@@ -36,7 +36,7 @@ export function SignupForm({
   const onSubmit = async (data: SignUpFormValues) => {
     const { firstname, lastname, username, email, password } = data;
 
-    // goi backend
+    // gọi backend để signup
     await signUp(username, password, email, firstname, lastname);
 
     navigate("/signin");
@@ -69,9 +69,7 @@ export function SignupForm({
                   <Input type="text" id="lastname" {...register("lastname")} />
 
                   {errors.lastname && (
-                    <p className="text-destructive text-sm">
-                      {errors.lastname.message}
-                    </p>
+                    <p className="error-message">{errors.lastname.message}</p>
                   )}
                 </div>
                 <div className="space-y-2">
@@ -84,9 +82,7 @@ export function SignupForm({
                     {...register("firstname")}
                   />
                   {errors.firstname && (
-                    <p className="text-destructive text-sm">
-                      {errors.firstname.message}
-                    </p>
+                    <p className="error-message">{errors.firstname.message}</p>
                   )}
                 </div>
               </div>
@@ -103,9 +99,7 @@ export function SignupForm({
                   {...register("username")}
                 />
                 {errors.username && (
-                  <p className="text-destructive text-sm">
-                    {errors.username.message}
-                  </p>
+                  <p className="error-message">{errors.username.message}</p>
                 )}
               </div>
 
@@ -121,9 +115,7 @@ export function SignupForm({
                   {...register("email")}
                 />
                 {errors.email && (
-                  <p className="text-destructive text-sm">
-                    {errors.email.message}
-                  </p>
+                  <p className="error-message">{errors.email.message}</p>
                 )}
               </div>
 
@@ -138,9 +130,7 @@ export function SignupForm({
                   {...register("password")}
                 />
                 {errors.password && (
-                  <p className="text-destructive text-sm">
-                    {errors.password.message}
-                  </p>
+                  <p className="error-message">{errors.password.message}</p>
                 )}
               </div>
 

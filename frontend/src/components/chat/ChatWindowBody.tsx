@@ -1,6 +1,6 @@
 import { useChatStore } from "@/stores/useChatStore";
-import ChatWelcomeScreen from "./ChatWelcomeScreen.tsx";
-import MessageItem from "./MessageItem.tsx";
+import ChatWelcomeScreen from "./ChatWelcomeScreen";
+import MessageItem from "./MessageItem";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
